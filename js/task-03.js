@@ -13,5 +13,45 @@ const images = [
   },
 ];
 
-const cccc = document.querySelector(".gallery");
-console.log(cccc);
+const imgGallery = document.querySelector(".gallery");
+
+const makeGalleryCard = (image) => {
+  const { url, alt } = image;
+  return `<li><img src = '${url}'alt = '${alt}' width = ''height = ''/></li>`;
+};
+const galleryCards = images.map(makeGalleryCard).join(" ");
+
+imgGallery.insertAdjacentHTML("beforeend", galleryCards);
+console.log(imgGallery);
+
+imgGallery.inneHTML = galleryCards; //Перезаписывает код
+
+// Другой вариант *********************************************
+
+// const imgGallery = document.querySelector(".gallery");
+
+// const makeGalleryCard = ({ url, alt }) => {
+//   const listItemEl = document.createElement("li");
+
+//   const listLinkEl = document.createElement("a");
+
+//   listItemEl.append(listLinkEl);
+
+//   const listImageEl = document.createElement("img");
+//   listImageEl.src = url;
+//   listImageEl.alt = alt;
+
+//   listLinkEl.append(listImageEl);
+
+//   return listItemEl;
+// };
+
+// const galleryCards = images.map(makeGalleryCard);
+// imgGallery.append(...galleryCards);
+
+// const galleryCards = images.map((el) => makeGalleryCard(el));
+// imgGallery.append(...galleryCards);
+
+// const galleryCards = images.map(makeGalleryCard).join(" ");
+// imgGallery.insertAdjacentHTML("beforeend", galleryCards);
+// console.log(galleryCards);
